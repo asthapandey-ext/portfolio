@@ -3,9 +3,12 @@ import {
   ArrowDownRight,
   ArrowUpRight,
   BarChart3,
+  BookOpen,
   Check,
+  Code2,
   ChevronRight,
   Download,
+  GraduationCap,
   Github,
   Linkedin,
   Mail,
@@ -124,8 +127,11 @@ const navItems = [
   { label: 'About', href: '#about' },
   { label: 'Work', href: '#work' },
   { label: 'Toolkit', href: '#toolkit' },
+  { label: 'Education', href: '#education' },
   { label: 'Contact', href: '#contact' },
 ];
+
+const orderedProjects = [projects[0], projects[3], projects[1], projects[2]];
 
 function Home() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -244,22 +250,32 @@ function Home() {
               <div><span className="mono">FOCUS</span><strong>Evidence over noise</strong></div>
             </div>
           </div>
-          <figure className="portrait-banner reveal delay-2" data-testid="figure-portrait">
-            <div className="banner-grid" aria-hidden="true" />
-            <img className="portrait-backdrop" src="/assets/astha-portrait.jpeg" alt="" aria-hidden="true" />
-            <div className="portrait-halo halo-one" aria-hidden="true" />
-            <div className="portrait-halo halo-two" aria-hidden="true" />
-            <div className="portrait-orbit" aria-hidden="true">
-              <span className="portrait-orbit-dot" />
-              <img className="portrait portrait-circle" src="/assets/astha-portrait.jpeg" alt="Astha Pandey working at her desk" />
-            </div>
-            <div className="portrait-profile-chip">
-              <span className="mono">ASTHA PANDEY</span>
-              <strong>Data analyst · AI/ML</strong>
-            </div>
-            <div className="banner-stat banner-stat-left">
-              <span className="mono">01 / 04</span>
-              <small>Selected studies</small>
+          <figure className="hero-visual reveal delay-2" data-testid="figure-portrait">
+            <div className="hero-visual-row">
+              <div className="portrait-banner">
+                <div className="banner-grid" aria-hidden="true" />
+                <img className="portrait-backdrop" src="/assets/astha-portrait.jpeg" alt="" aria-hidden="true" />
+                <div className="banner-stat banner-stat-left">
+                  <span className="mono">01 / 04</span>
+                  <small>Selected studies</small>
+                </div>
+                <div className="banner-label">
+                  <span className="mono">DATA / PEOPLE / SYSTEMS</span>
+                  <strong>Turning raw information into a useful next step.</strong>
+                </div>
+              </div>
+              <div className="profile-panel">
+                <div className="portrait-halo halo-one" aria-hidden="true" />
+                <div className="portrait-halo halo-two" aria-hidden="true" />
+                <div className="portrait-orbit">
+                  <span className="portrait-orbit-dot" />
+                  <img className="portrait portrait-circle" src="/assets/astha-portrait.jpeg" alt="Astha Pandey working at her desk" />
+                </div>
+                <div className="portrait-profile-chip">
+                  <span className="mono">ASTHA PANDEY</span>
+                  <strong>Data analyst · AI/ML</strong>
+                </div>
+              </div>
             </div>
             <figcaption className="portrait-caption">
               <span className="mono">A quiet observer of patterns · India</span>
@@ -271,23 +287,27 @@ function Home() {
 
       <section className="section wrap" id="about" data-section="about">
         <div className="section-rule reveal" />
-        <div className="intro-grid" style={{ paddingTop: '34px' }}>
-          <div className="eyebrow reveal">01 / About the work</div>
-          <div>
-            <p className="intro-copy reveal delay-1" data-testid="text-about">
-              Good analysis leaves people with a better question — and a more confident
-              next step. I work across <span className="serif">cleaning, exploration, visualisation,</span> and
-              forecasting to make that step visible.
+        <div className="about-grid" style={{ paddingTop: '34px' }}>
+          <article className="about-card reveal">
+            <div className="eyebrow">01 / Who am I</div>
+            <h2 className="about-heading">A curious analyst who likes the <span className="serif">why</span> behind the number.</h2>
+            <p data-testid="text-about">
+              I&apos;m Astha, a data analyst from India who enjoys turning messy information into clear,
+              useful stories. I&apos;m also expanding into data science and AI/ML, one grounded project at a time.
             </p>
-            <div className="intro-aside reveal delay-2">
-              <p>
-                My approach is curious but grounded: understand the context, test the shape of the data,
-                communicate what it can and cannot say.
-              </p>
-              <div className="location-line"><MapPin size={13} /> India · available for remote, hybrid, and onsite roles</div>
+          </article>
+          <article className="about-card about-card-accent reveal delay-1">
+            <div className="eyebrow">02 / What I do</div>
+            <h2 className="about-heading">I move from raw data to a decision someone can use.</h2>
+            <p>
+              I work across cleaning, exploration, visualisation, forecasting, and business reporting —
+              always with context, clarity, and evidence over noise.
+            </p>
+            <div className="about-details">
+              <div className="location-line"><MapPin size={13} /> India · remote, hybrid, and onsite</div>
               <a className="email-line" href="mailto:asthapandeylinkdin@gmail.com"><Mail size={13} /> asthapandeylinkdin@gmail.com</a>
             </div>
-          </div>
+          </article>
         </div>
       </section>
 
@@ -300,28 +320,31 @@ function Home() {
           </div>
           <p className="work-note reveal delay-2">Four studies across retail, people, payments, and digital commerce.</p>
         </div>
-        <div className="project-list" data-testid="list-projects">
-          {projects.map((project) => (
+        <div className="project-grid" data-testid="list-projects">
+          {orderedProjects.map((project) => (
             <button
               type="button"
-              className="project-row reveal"
+              className="project-card reveal"
               key={project.id}
               onClick={() => setSelectedProject(project)}
               data-testid={`button-project-${project.id}`}
               aria-label={`Read more about ${project.title}`}
             >
-              <span className="project-index">{project.number}</span>
-              <span>
-                <span className="project-title">{project.title}</span>
+              <span className="project-card-top">
+                <span className="project-index">{project.number}</span>
+                <span className="project-type">{project.type}</span>
+                <ChevronRight className="project-arrow" size={19} />
+              </span>
+              <span className="project-title">{project.title}</span>
+              <span className="project-description">{project.description}</span>
+              <span className="project-card-footer">
                 <span className="project-tags">
                   {project.tags.map((tag) => <span className="tag" key={tag}>{tag}</span>)}
                 </span>
+                <span className="project-signal" aria-hidden="true">
+                  {project.metrics.map((metric) => <span key={metric.label} style={{ height: `${Math.max(18, metric.percent)}%` }} />)}
+                </span>
               </span>
-              <span className="project-type">{project.type}</span>
-              <span className="project-signal" aria-hidden="true">
-                {project.metrics.map((metric) => <span key={metric.label} style={{ height: `${Math.max(18, metric.percent)}%` }} />)}
-              </span>
-              <ChevronRight className="project-arrow" size={19} />
             </button>
           ))}
         </div>
@@ -332,14 +355,44 @@ function Home() {
           <div>
             <div className="eyebrow reveal">03 / Toolkit</div>
             <p className="skill-statement reveal delay-1" data-testid="text-toolkit-statement">
-              The tools are practical. The thinking is <em>the point.</em>
+              A short, focused toolkit for finding the <em>signal.</em>
             </p>
           </div>
           <div className="skill-columns reveal delay-2" data-testid="list-skills">
-            <div className="skill-group"><h3>Analysis</h3><p>Statistics<br />Data cleaning<br />Exploratory analysis<br />Business thinking</p></div>
-            <div className="skill-group"><h3>Languages</h3><p>Python<br />SQL<br />Excel</p></div>
-            <div className="skill-group"><h3>Libraries</h3><p>Pandas<br />NumPy<br />scikit-learn</p></div>
-            <div className="skill-group"><h3>Communication</h3><p>Power BI<br />Tableau<br />Dashboards &amp; narrative</p></div>
+            <div className="skill-group">
+              <div className="skill-heading"><Code2 size={19} /><h3>Languages</h3></div>
+              <div className="skill-pills"><span>Python</span><span>Java</span><span>SQL</span></div>
+            </div>
+            <div className="skill-group">
+              <div className="skill-heading"><BookOpen size={19} /><h3>Libraries</h3></div>
+              <div className="skill-pills"><span>Pandas</span><span>Matplotlib</span><span>scikit-learn</span><span>Seaborn</span><span>NumPy</span></div>
+            </div>
+            <div className="skill-group skill-group-wide">
+              <div className="skill-heading"><BarChart3 size={19} /><h3>Data visualisation</h3></div>
+              <div className="skill-pills"><span>Power BI</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section wrap" id="education" data-section="education">
+        <div className="section-rule reveal" />
+        <div className="education-grid" style={{ paddingTop: '34px' }}>
+          <div>
+            <div className="eyebrow reveal">04 / Education</div>
+            <p className="process-intro reveal delay-1">Building a strong foundation in software, systems, and analytical thinking.</p>
+          </div>
+          <div className="education-list">
+            <article className="education-row reveal">
+              <span className="education-icon"><GraduationCap size={19} /></span>
+              <div><h3>Bachelor of Computer Application</h3><p>Marwari College, Ranchi · Ranchi University</p></div>
+              <span className="education-dates">2025 — 2028</span>
+            </article>
+            <article className="education-row reveal delay-1">
+              <span className="education-icon"><GraduationCap size={19} /></span>
+              <div><h3>Higher Secondary School</h3><p>JVM Shyamali STEM</p></div>
+              <span className="education-dates">2022 — 2024</span>
+            </article>
           </div>
         </div>
       </section>
@@ -348,7 +401,7 @@ function Home() {
         <div className="section-rule reveal" />
         <div className="process-grid" style={{ paddingTop: '34px' }}>
           <div>
-            <div className="eyebrow reveal">04 / Working principles</div>
+            <div className="eyebrow reveal">05 / Working principles</div>
             <p className="process-intro reveal delay-1">A simple rhythm for moving from ambiguity to something another person can use.</p>
           </div>
           <div className="principles">
@@ -363,7 +416,7 @@ function Home() {
         <div className="section-rule reveal" />
         <div className="contact-box">
           <div>
-            <div className="eyebrow reveal" style={{ paddingTop: '34px' }}>05 / Contact</div>
+            <div className="eyebrow reveal" style={{ paddingTop: '34px' }}>06 / Contact</div>
             <h2 className="contact-title reveal delay-1" data-testid="heading-contact">Let&apos;s find<br /><em>the signal.</em></h2>
           </div>
           <div className="reveal delay-2">
