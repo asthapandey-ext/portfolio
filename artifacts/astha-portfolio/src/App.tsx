@@ -254,7 +254,7 @@ function Home() {
             <div className="hero-visual-row">
               <div className="portrait-banner">
                 <div className="banner-grid" aria-hidden="true" />
-                <img className="portrait-backdrop" src="/assets/astha-portrait.jpeg" alt="" aria-hidden="true" />
+                <img className="portrait-backdrop" src="src={`${import.meta.env.BASE_URL}assets/astha-portrait.jpeg`}" alt="" aria-hidden="true" />
                 <div className="banner-stat banner-stat-left">
                   <span className="mono">01 / 04</span>
                   <small>Selected studies</small>
