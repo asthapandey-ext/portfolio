@@ -269,7 +269,7 @@ function Home() {
                 <div className="portrait-halo halo-two" aria-hidden="true" />
                 <div className="portrait-orbit">
                   <span className="portrait-orbit-dot" />
-                  <img className="portrait portrait-circle" src="/assets/astha-portrait.jpeg" alt="Astha Pandey working at her desk" />
+                  <img className="portrait portrait-circle" src={`${import.meta.env.BASE_URL}assets/astha-portrait.jpeg`}" alt="Astha Pandey working at her desk" />
                 </div>
                 <div className="portrait-profile-chip">
                   <span className="mono">ASTHA PANDEY</span>
