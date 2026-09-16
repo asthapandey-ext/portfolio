@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Astha Pandey Portfolio"
+description = "A polished personal portfolio for Astha Pandey, a data analyst expanding into data science and AI/ML. Showcases analytical projects, skills, resume, and professional links in a focused, interactive single-page experience."
+version = "1.0.0"
+id = "artifacts/astha-portfolio"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 25056
+
+[services.development]
+run = "pnpm --filter @workspace/astha-portfolio run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/astha-portfolio", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/astha-portfolio/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "25056"
+BASE_PATH = "/"
