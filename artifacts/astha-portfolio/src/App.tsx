@@ -51,7 +51,7 @@ const projects: Project[] = [
       'Built a forecasting workflow designed to support operational decisions, not just a score.',
     ],
     repo: 'https://github.com/asthapandey-ext/Rossman_Sales_Forecasting',
-    report: '/assets/rossmann-forecast-report.pdf',
+    report: `${import.meta.env.BASE_URL}assets/rossmann-forecast-report.pdf`,
     metrics: [
       { label: 'Model R² score', value: '87.4%', percent: 87.4 },
       { label: 'Promotion sales lift', value: '+38.8%', percent: 38.8 },
@@ -72,7 +72,7 @@ const projects: Project[] = [
       'Translated findings into a concise analytical report for decision-makers.',
     ],
     repo: 'https://github.com/asthapandey-ext/Amazon_Sales_Analytics',
-    report: '/assets/amazon-sales-report.pdf',
+    report: `${import.meta.env.BASE_URL}assets/amazon-sales-report.pdf`,
     metrics: [
       { label: 'Core analytical queries', value: '4', percent: 100 },
       { label: 'Price segments', value: '3', percent: 75 },
@@ -93,7 +93,7 @@ const projects: Project[] = [
       'Presented the result as a readable story rather than a dense dashboard dump.',
     ],
     repo: 'https://github.com/asthapandey-ext/hr_attrition_analysis',
-    report: '/assets/ibm-hr-report.pdf',
+    report: `${import.meta.env.BASE_URL}assets/ibm-hr-report.pdf`,
     metrics: [
       { label: 'Overall attrition', value: '16.1%', percent: 53.7 },
       { label: 'Overtime attrition', value: '30.5%', percent: 100 },
@@ -114,7 +114,7 @@ const projects: Project[] = [
       'Created an evidence-led narrative around scale, change, and uncertainty.',
     ],
     repo: 'https://github.com/asthapandey-ext/UPI-Adoption-vs.-Fraud-Risk-A-Trend-Analysis',
-    report: '/assets/upi-risk-report.pdf',
+    report: `${import.meta.env.BASE_URL}assets/upi-risk-report.pdf`,
     metrics: [
       { label: 'Fraud ratio decline', value: '72.7%', percent: 72.7 },
       { label: 'Forecast error (MAPE)', value: '6.6%', percent: 6.6 },
@@ -196,7 +196,7 @@ function Home() {
                 {item.label}
               </a>
             ))}
-            <a className="nav-resume" href="/assets/Astha_Pandey_Resume.docx" download data-testid="link-resume-nav">
+            <a className="nav-resume" href=" href={`${import.meta.env.BASE_URL}assets/Astha_Pandey_Resume.docx`}" download data-testid="link-resume-nav">
               <Download size={14} /> Resume
             </a>
           </nav>
@@ -216,7 +216,7 @@ function Home() {
               {item.label}
             </a>
           ))}
-          <a href="/assets/Astha_Pandey_Resume.docx" download onClick={closeMobile} data-testid="link-resume-mobile">
+          <a href=" href={`${import.meta.env.BASE_URL}assets/Astha_Pandey_Resume.docx`}" download onClick={closeMobile} data-testid="link-resume-mobile">
             Download resume
           </a>
         </div>
@@ -432,7 +432,7 @@ function Home() {
           <div className="social-links">
             <a href="https://github.com/asthapandey-ext" target="_blank" rel="noreferrer" data-testid="link-github-footer"><Github size={16} /> <span className="sr-only">GitHub</span></a>
             <a href="https://www.linkedin.com/in/astha-pandey-821a603a0/" target="_blank" rel="noreferrer" data-testid="link-linkedin-footer"><Linkedin size={16} /> <span className="sr-only">LinkedIn</span></a>
-            <a href="/assets/Astha_Pandey_Resume.docx" download data-testid="link-resume-footer"><Download size={16} /> <span className="sr-only">Download resume</span></a>
+            <a href=" href={`${import.meta.env.BASE_URL}assets/Astha_Pandey_Resume.docx`}" download data-testid="link-resume-footer"><Download size={16} /> <span className="sr-only">Download resume</span></a>
           </div>
         </footer>
       </section>
