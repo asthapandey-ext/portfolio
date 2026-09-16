@@ -34,26 +34,26 @@
 }
 
 :root {
-  --background: 225 28% 96%;
-  --foreground: 226 36% 15%;
-  --border: 222 20% 84%;
-  --input: 222 20% 84%;
-  --ring: 254 62% 55%;
-  --card: 225 32% 99%;
-  --card-foreground: 226 36% 15%;
-  --card-border: 222 20% 84%;
-  --primary: 232 58% 42%;
-  --primary-foreground: 225 28% 98%;
-  --secondary: 224 24% 90%;
-  --secondary-foreground: 226 36% 15%;
-  --muted: 222 20% 90%;
-  --muted-foreground: 225 15% 42%;
-  --accent: 261 68% 63%;
-  --accent-foreground: 226 36% 15%;
+  --background: 232 45% 8%;
+  --foreground: 226 30% 96%;
+  --border: 230 24% 24%;
+  --input: 230 24% 24%;
+  --ring: 263 75% 70%;
+  --card: 232 40% 12%;
+  --card-foreground: 226 30% 96%;
+  --card-border: 230 24% 24%;
+  --primary: 245 70% 68%;
+  --primary-foreground: 232 45% 8%;
+  --secondary: 230 25% 18%;
+  --secondary-foreground: 226 30% 96%;
+  --muted: 230 24% 18%;
+  --muted-foreground: 226 18% 72%;
+  --accent: 205 85% 72%;
+  --accent-foreground: 232 45% 8%;
   --destructive: 5 65% 45%;
   --destructive-foreground: 39 30% 96%;
-  --sidebar: 232 58% 42%;
-  --sidebar-foreground: 225 28% 98%;
+  --sidebar: 245 70% 68%;
+  --sidebar-foreground: 232 45% 8%;
   --app-font-sans: 'DM Sans', sans-serif;
   --app-font-serif: 'Instrument Serif', Georgia, serif;
   --app-font-mono: 'DM Mono', monospace;
@@ -79,8 +79,8 @@
   --accent-foreground: 226 34% 12%;
   --destructive: 5 65% 55%;
   --destructive-foreground: 39 30% 96%;
-  --sidebar: 177 31% 12%;
-  --sidebar-foreground: 39 28% 94%;
+  --sidebar: 245 70% 68%;
+  --sidebar-foreground: 232 45% 8%;
 }
 
 @layer base {
@@ -100,8 +100,9 @@
   min-height: 100dvh;
   position: relative;
   background:
-    radial-gradient(circle at 12% 8%, hsl(211 76% 70% / .12), transparent 30rem),
-    radial-gradient(circle at 88% 28%, hsl(261 68% 70% / .12), transparent 34rem);
+    radial-gradient(circle at 8% 4%, hsl(205 85% 72% / .13), transparent 32rem),
+    radial-gradient(circle at 92% 21%, hsl(263 75% 70% / .16), transparent 38rem),
+    linear-gradient(135deg, hsl(232 45% 8%), hsl(235 38% 12%) 54%, hsl(252 35% 14%));
 }
 .portfolio-shell::before {
   content: '';
@@ -125,7 +126,7 @@
 
 .nav-shell {
   position: fixed; z-index: 40; top: 0; left: 0; width: 100%;
-  background: hsl(var(--background) / .88); border-bottom: 1px solid hsl(var(--foreground) / .1);
+  background: hsl(232 45% 8% / .76); border-bottom: 1px solid hsl(var(--foreground) / .12);
   backdrop-filter: blur(16px);
 }
 .nav-inner { height: 76px; display: flex; align-items: center; justify-content: space-between; }
@@ -178,24 +179,68 @@
 .hero-meta { display: flex; gap: 22px; margin-top: 54px; color: hsl(var(--muted-foreground)); font-size: .76rem; }
 .hero-meta strong { display: block; color: hsl(var(--foreground)); margin-top: 7px; font-size: .9rem; }
 .portrait-banner {
-  position: relative; grid-column: 1 / -1; width: 100%; height: 235px; overflow: hidden;
-  border-top: 1px solid hsl(var(--accent) / .34); border-bottom: 1px solid hsl(var(--primary) / .28);
-  background: linear-gradient(100deg, hsl(211 76% 70% / .28), hsl(261 68% 63% / .2) 56%, hsl(226 36% 15% / .16));
+  position: relative; grid-column: 1 / -1; width: 100%; height: 290px; overflow: hidden;
+  border: 1px solid hsl(var(--accent) / .32); border-radius: 24px;
+  background: linear-gradient(105deg, hsl(209 72% 28%), hsl(246 54% 28%) 54%, hsl(267 55% 33%));
+  box-shadow: 0 28px 90px hsl(245 70% 4% / .34), inset 0 0 0 1px hsl(255 100% 100% / .05);
 }
 .portrait-banner::before {
   content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
-  background: linear-gradient(90deg, hsl(225 28% 96% / .18), hsl(232 58% 42% / .18) 52%, hsl(261 68% 63% / .36));
+  background: linear-gradient(90deg, hsl(205 85% 72% / .13), hsl(245 70% 68% / .2) 52%, hsl(263 75% 70% / .34));
 }
 .portrait-banner::after {
-  content: 'ASTHA / DATA ANALYST'; position: absolute; right: 20px; bottom: 18px; z-index: 2;
-  color: hsl(var(--foreground) / .78); font: .62rem var(--app-font-mono); letter-spacing: .18em;
+  content: ''; position: absolute; inset: 16px; z-index: 2; pointer-events: none;
+  border: 1px solid hsl(255 100% 100% / .2); border-radius: 15px;
 }
-.portrait { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 42%; opacity: .3; filter: saturate(.95) contrast(1.05); }
-.portrait-caption { display: flex; justify-content: space-between; margin-top: 14px; font-size: .68rem; color: hsl(var(--muted-foreground)); }
+.banner-grid {
+  position: absolute; inset: 0; z-index: 1; opacity: .22;
+  background-image: linear-gradient(hsl(255 100% 100% / .11) 1px, transparent 1px), linear-gradient(90deg, hsl(255 100% 100% / .11) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: linear-gradient(90deg, transparent, black 25%, black 78%, transparent);
+}
+.portrait-backdrop {
+  position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 35%;
+  opacity: .17; filter: saturate(.85) contrast(1.15) blur(1px);
+}
+.portrait-halo { position: absolute; z-index: 2; border-radius: 50%; pointer-events: none; }
+.halo-one {
+  width: 252px; height: 252px; right: 25%; top: 20px;
+  border: 1px solid hsl(205 85% 72% / .5); box-shadow: 0 0 50px hsl(205 85% 72% / .2);
+}
+.halo-two {
+  width: 316px; height: 316px; right: calc(25% - 32px); top: -12px;
+  border: 1px dashed hsl(263 75% 70% / .48); transform: rotate(26deg);
+}
+.portrait-orbit {
+  position: absolute; z-index: 4; right: 25%; top: 42px; width: 206px; height: 206px; padding: 7px;
+  border-radius: 50%; background: linear-gradient(135deg, hsl(205 85% 72%), hsl(263 75% 70%) 60%, hsl(255 100% 100% / .25));
+  box-shadow: 0 18px 42px hsl(232 45% 4% / .45), 0 0 0 8px hsl(255 100% 100% / .06);
+}
+.portrait-orbit::before {
+  content: ''; position: absolute; inset: -14px; border-radius: 50%; border: 1px solid hsl(255 100% 100% / .24);
+}
+.portrait-orbit-dot {
+  position: absolute; z-index: 5; right: 5px; top: 26px; width: 12px; height: 12px; border-radius: 50%;
+  background: hsl(var(--accent)); box-shadow: 0 0 0 5px hsl(var(--accent) / .18), 0 0 20px hsl(var(--accent) / .6);
+}
+.portrait { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; border-radius: 50%; opacity: 1; filter: saturate(.92) contrast(1.05); }
+.portrait-profile-chip {
+  position: absolute; z-index: 5; right: 9%; top: 84px; display: grid; gap: 6px; min-width: 160px; padding: 12px 15px;
+  border: 1px solid hsl(255 100% 100% / .23); border-radius: 13px; background: hsl(232 45% 8% / .42); backdrop-filter: blur(12px);
+  color: hsl(var(--foreground)); box-shadow: 0 12px 30px hsl(232 45% 4% / .24);
+}
+.portrait-profile-chip span { color: hsl(var(--accent)); font-size: .6rem; letter-spacing: .12em; }
+.portrait-profile-chip strong { font-size: .8rem; font-weight: 500; }
+.banner-stat {
+  position: absolute; z-index: 4; left: 7%; bottom: 49px; display: grid; gap: 5px; color: hsl(var(--foreground) / .82);
+}
+.banner-stat span { color: hsl(var(--accent)); font-size: .65rem; letter-spacing: .12em; }
+.banner-stat small { color: hsl(var(--foreground) / .66); font-size: .68rem; }
+.portrait-caption { position: absolute; z-index: 4; left: 7%; right: 7%; bottom: 17px; display: flex; justify-content: space-between; font-size: .68rem; color: hsl(var(--foreground) / .64); }
 
 .intro-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 100px; align-items: start; }
 .intro-copy { font-size: clamp(1.35rem, 2.5vw, 2.25rem); line-height: 1.22; letter-spacing: -.045em; max-width: 720px; }
-.intro-copy .serif { color: hsl(var(--primary)); }
+.intro-copy .serif { color: hsl(var(--accent)); }
 .intro-aside { color: hsl(var(--muted-foreground)); line-height: 1.7; font-size: .94rem; max-width: 320px; }
 .intro-aside p { margin: 0 0 20px; }
 .location-line { display: flex; align-items: center; gap: 8px; color: hsl(var(--foreground)); font: .68rem var(--app-font-mono); text-transform: uppercase; letter-spacing: .08em; }
@@ -289,7 +334,13 @@
   .mobile-nav.open { display: block; }
   .hero { padding-top: 135px; min-height: auto; }
   .hero-layout, .intro-grid, .split-grid, .process-grid { grid-template-columns: 1fr; gap: 52px; }
-  .portrait-banner { height: 190px; margin-top: 8px; }
+  .portrait-banner { height: 230px; margin-top: 8px; }
+  .portrait-orbit { width: 150px; height: 150px; right: 15%; top: 35px; }
+  .halo-one { width: 188px; height: 188px; right: calc(15% - 19px); top: 16px; }
+  .halo-two { width: 226px; height: 226px; right: calc(15% - 38px); top: -3px; }
+  .portrait-profile-chip { right: 4%; top: 24px; min-width: 132px; padding: 10px 12px; }
+  .banner-stat { left: 6%; bottom: 51px; }
+  .portrait-caption { left: 6%; right: 6%; }
   .hero-title { font-size: clamp(4.2rem, 18vw, 7rem); }
   .hero-meta { margin-top: 40px; }
   .section { padding: 92px 0; }
@@ -308,6 +359,12 @@
   .wrap { width: min(100% - 28px, 640px); }
   .hero-title { font-size: 4.2rem; }
   .hero-meta { gap: 14px; }
+  .portrait-banner { height: 220px; }
+  .portrait-orbit { width: 132px; height: 132px; right: 10%; top: 42px; }
+  .halo-one { width: 166px; height: 166px; right: calc(10% - 17px); top: 25px; }
+  .halo-two { width: 198px; height: 198px; right: calc(10% - 33px); top: 9px; }
+  .portrait-profile-chip { right: 3%; top: 20px; min-width: 124px; }
+  .banner-stat { left: 5%; bottom: 49px; }
   .section-heading { font-size: 3rem; }
   .skill-columns { grid-template-columns: 1fr; }
   .project-modal { padding: 26px 22px; }

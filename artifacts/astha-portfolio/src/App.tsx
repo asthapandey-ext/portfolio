@@ -245,7 +245,22 @@ function Home() {
             </div>
           </div>
           <figure className="portrait-banner reveal delay-2" data-testid="figure-portrait">
-            <img className="portrait" src="/assets/astha-portrait.jpeg" alt="Astha Pandey working at her desk" />
+            <div className="banner-grid" aria-hidden="true" />
+            <img className="portrait-backdrop" src="/assets/astha-portrait.jpeg" alt="" aria-hidden="true" />
+            <div className="portrait-halo halo-one" aria-hidden="true" />
+            <div className="portrait-halo halo-two" aria-hidden="true" />
+            <div className="portrait-orbit" aria-hidden="true">
+              <span className="portrait-orbit-dot" />
+              <img className="portrait portrait-circle" src="/assets/astha-portrait.jpeg" alt="Astha Pandey working at her desk" />
+            </div>
+            <div className="portrait-profile-chip">
+              <span className="mono">ASTHA PANDEY</span>
+              <strong>Data analyst · AI/ML</strong>
+            </div>
+            <div className="banner-stat banner-stat-left">
+              <span className="mono">01 / 04</span>
+              <small>Selected studies</small>
+            </div>
             <figcaption className="portrait-caption">
               <span className="mono">A quiet observer of patterns · India</span>
               <span className="mono">2026</span>
