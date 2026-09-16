@@ -24,6 +24,13 @@ type Project = {
   details: string[];
   repo: string;
   report: string;
+  metrics: Metric[];
+};
+
+type Metric = {
+  label: string;
+  value: string;
+  percent: number;
 };
 
 const projects: Project[] = [
@@ -42,6 +49,11 @@ const projects: Project[] = [
     ],
     repo: 'https://github.com/asthapandey-ext/Rossman_Sales_Forecasting',
     report: '/assets/rossmann-forecast-report.pdf',
+    metrics: [
+      { label: 'Model R² score', value: '87.4%', percent: 87.4 },
+      { label: 'Promotion sales lift', value: '+38.8%', percent: 38.8 },
+      { label: 'Top feature importance', value: '62.3%', percent: 62.3 },
+    ],
   },
   {
     id: 'amazon',
@@ -58,6 +70,11 @@ const projects: Project[] = [
     ],
     repo: 'https://github.com/asthapandey-ext/Amazon_Sales_Analytics',
     report: '/assets/amazon-sales-report.pdf',
+    metrics: [
+      { label: 'Core analytical queries', value: '4', percent: 100 },
+      { label: 'Price segments', value: '3', percent: 75 },
+      { label: 'Dashboard views', value: '3', percent: 75 },
+    ],
   },
   {
     id: 'hr',
@@ -74,6 +91,11 @@ const projects: Project[] = [
     ],
     repo: 'https://github.com/asthapandey-ext/hr_attrition_analysis',
     report: '/assets/ibm-hr-report.pdf',
+    metrics: [
+      { label: 'Overall attrition', value: '16.1%', percent: 53.7 },
+      { label: 'Overtime attrition', value: '30.5%', percent: 100 },
+      { label: 'Employees analyzed', value: '1,470', percent: 73.5 },
+    ],
   },
   {
     id: 'upi',
@@ -90,6 +112,11 @@ const projects: Project[] = [
     ],
     repo: 'https://github.com/asthapandey-ext/UPI-Adoption-vs.-Fraud-Risk-A-Trend-Analysis',
     report: '/assets/upi-risk-report.pdf',
+    metrics: [
+      { label: 'Fraud ratio decline', value: '72.7%', percent: 72.7 },
+      { label: 'Forecast error (MAPE)', value: '6.6%', percent: 6.6 },
+      { label: 'Transaction value growth', value: '300×+', percent: 100 },
+    ],
   },
 ];
 
@@ -193,7 +220,7 @@ function Home() {
         <div className="hero-layout">
           <div>
             <div className="hero-kicker eyebrow reveal" data-testid="text-availability">
-              Data analyst · open to thoughtful problems
+              Data analyst · remote · hybrid · onsite
             </div>
             <h1 className="hero-title reveal delay-1" data-testid="heading-hero">
               <span className="line">Making</span>
@@ -208,19 +235,19 @@ function Home() {
               <a className="button-primary" href="#work" data-testid="link-see-work">
                 See selected work <ArrowDownRight size={16} />
               </a>
-              <a className="button-quiet" href="mailto:astha.pandey.analytics@gmail.com" data-testid="link-email-hero">
+              <a className="button-quiet" href="mailto:asthapandeylinkdin@gmail.com" data-testid="link-email-hero">
                 Get in touch <Mail size={15} />
               </a>
             </div>
             <div className="hero-meta reveal delay-3">
-              <div><span className="mono">BASE</span><strong>India / remote</strong></div>
+              <div><span className="mono">AVAILABILITY</span><strong>Remote · Hybrid · Onsite</strong></div>
               <div><span className="mono">FOCUS</span><strong>Evidence over noise</strong></div>
             </div>
           </div>
-          <figure className="portrait-frame reveal delay-2" data-testid="figure-portrait">
+          <figure className="portrait-banner reveal delay-2" data-testid="figure-portrait">
             <img className="portrait" src="/assets/astha-portrait.jpeg" alt="Astha Pandey working at her desk" />
             <figcaption className="portrait-caption">
-              <span className="mono">A quiet observer of patterns</span>
+              <span className="mono">A quiet observer of patterns · India</span>
               <span className="mono">2026</span>
             </figcaption>
           </figure>
@@ -242,7 +269,8 @@ function Home() {
                 My approach is curious but grounded: understand the context, test the shape of the data,
                 communicate what it can and cannot say.
               </p>
-              <div className="location-line"><MapPin size={13} /> Working from India · available remotely</div>
+              <div className="location-line"><MapPin size={13} /> India · available for remote, hybrid, and onsite roles</div>
+              <a className="email-line" href="mailto:asthapandeylinkdin@gmail.com"><Mail size={13} /> asthapandeylinkdin@gmail.com</a>
             </div>
           </div>
         </div>
@@ -275,6 +303,9 @@ function Home() {
                 </span>
               </span>
               <span className="project-type">{project.type}</span>
+              <span className="project-signal" aria-hidden="true">
+                {project.metrics.map((metric) => <span key={metric.label} style={{ height: `${Math.max(18, metric.percent)}%` }} />)}
+              </span>
               <ChevronRight className="project-arrow" size={19} />
             </button>
           ))}
@@ -322,7 +353,8 @@ function Home() {
           </div>
           <div className="reveal delay-2">
             <p className="contact-copy">Have a dataset, a question, or a problem that deserves a closer look? I&apos;d like to hear about it.</p>
-            <a className="button-primary" href="mailto:astha.pandey.analytics@gmail.com" data-testid="link-email-contact">
+            <a className="contact-email" href="mailto:asthapandeylinkdin@gmail.com">asthapandeylinkdin@gmail.com</a>
+            <a className="button-primary" href="mailto:asthapandeylinkdin@gmail.com" data-testid="link-email-contact">
               Start a conversation <ArrowUpRight size={16} />
             </a>
           </div>
@@ -353,6 +385,20 @@ function Home() {
             <span className="modal-project-id">{selectedProject.number} / CASE STUDY</span>
             <h2 className="modal-title" id="project-modal-title">{selectedProject.title}</h2>
             <p className="modal-description">{selectedProject.description}</p>
+            <div className="performance-panel" data-testid={`graph-performance-${selectedProject.id}`}>
+              <div className="performance-heading">
+                <span className="mono">PROJECT PERFORMANCE</span>
+                <BarChart3 size={16} />
+              </div>
+              <div className="performance-chart">
+                {selectedProject.metrics.map((metric) => (
+                  <div className="metric-row" key={metric.label}>
+                    <div className="metric-label"><span>{metric.label}</span><strong>{metric.value}</strong></div>
+                    <div className="metric-track"><span style={{ width: `${metric.percent}%` }} /></div>
+                  </div>
+                ))}
+              </div>
+            </div>
             <div className="modal-list">
               {selectedProject.details.map((detail) => <div key={detail}><Check size={15} /><span>{detail}</span></div>)}
             </div>
